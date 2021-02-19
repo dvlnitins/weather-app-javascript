@@ -1,17 +1,53 @@
-var d = new Date();
-			document.getElementById("day").innerHTML = d.getDate();
-			
-			var month = new Array();
-			month[0] = "January";
-			month[1] = "February";
-			month[2] = "March";
-			month[3] = "April";
-			month[4] = "May";
-			month[5] = "June";
-			month[6] = "July";
-			month[7] = "August";
-			month[8] = "September";
-			month[9] = "October";
-			month[10] = "November";
-			month[11] = "December";
-			document.getElementById("month").innerHTML = month[d.getMonth()];
+let weather = {
+	apiKey: "f873382d1fe2dce49f54f6a5bb3dff98",
+	fetchWeather: function (city) {
+	  fetch(
+		"https://api.openweathermap.org/data/2.5/weather?q=" +
+		  city +
+		  "&units=metric&appid=" +
+		  this.apiKey
+	  )
+		.then((response) => {
+		  if (!response.ok) {
+			alert("No weather found.");
+			throw new Error("No weather found.");
+		  }
+		  return response.json();
+		})
+		.then((data) => this.displayWeather(data));
+	},
+	displayWeather: function (data) {
+	  const { name } = data;
+	  const { icon, description } = data.weather[0];
+	  const { temp, humidity } = data.main;
+	  const { speed } = data.wind;
+	  document.querySelector(".city").innerText = "Weather in " + name;
+	  document.querySelector(".icon").src =
+		"https://openweathermap.org/img/wn/" + icon + ".png";
+	  document.querySelector(".description").innerText = description;
+	  document.querySelector(".temp").innerText = temp + "°C";
+	  document.querySelector(".humidity").innerText =
+		"Humidity: " + humidity + "%";
+	  document.querySelector(".wind").innerText =
+		"Wind speed: " + speed + " km/h";
+	  document.querySelector(".weather").classList.remove("loading");
+	},
+	search: function () {
+	  this.fetchWeather(document.querySelector(".search-bar").value);
+	},
+  };
+  
+  document.querySelector(".search button").addEventListener("click", function () {
+	weather.search();
+  });
+  
+  document
+	.querySelector(".search-bar")
+	.addEventListener("keyup", function (event) {
+	  if (event.key == "Enter") {
+		weather.search();
+	  }
+	});
+  
+  weather.fetchWeather("Delhi");
+  
