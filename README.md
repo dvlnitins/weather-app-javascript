@@ -1,4 +1,4 @@
-## Weather App
+## Weather App UI - Glassmorphism ❄️ + Orb Animation
 
 > This JS ES6 application will show the weather data that you query for: using the openweathermap.org API 
 
