@@ -2,18 +2,17 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Weather UI - Glassmorphism ❄️ + Orb Animation</title>
+  <title>Weather News App - Glassmorphism ❄️ + Orb Animation</title>
   <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-<meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="./style.css">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-<!-- partial:index.partial.html -->
 <!-- Canvas -->
 <canvas class="orb-canvas"></canvas>
 <!-- Overlay -->
@@ -48,8 +47,24 @@
     </div>
   </div>
 </div>
+
+<div class="container mt-5">
+  <h2>Top News</h2>
+  <hr>
+  <div id="newsAccordion"></div>
+
+</div>    
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <!-- partial -->
-  <script type="module" src="./script.js"></script>
+<script type="module" src="./script.js"></script>
+<script src="./weather.js"></script>
+<script src="./news.js"></script>
 
 </body>
 </html>
